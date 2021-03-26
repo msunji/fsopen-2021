@@ -5,6 +5,12 @@ const Header = (props) => {
   return <h1>{props.course}</h1>;
 }
 
+// Part component
+const Part = ({courseTitle, numExercises}) => {
+  // console.log(courseTitle[0], numExercises[0]);
+  return <p>{courseTitle[0]} {numExercises[0]}</p>
+}
+
 // Content component
 const Content = ({courses, exercises}) => {
   console.log(courses);
@@ -14,9 +20,9 @@ const Content = ({courses, exercises}) => {
 
   return (
     <div>
-      <p>{course1} {ex1}</p>
-      <p>{course2} {ex2}</p>
-      <p>{course3} {ex3}</p>
+      <Part courseTitle={course1} numExercises={ex1} />
+      <Part courseTitle={course2} numExercises={ex2} />
+      <Part courseTitle={course3} numExercises={ex3} />
     </div>
   )
 }
