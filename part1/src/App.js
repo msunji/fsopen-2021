@@ -6,47 +6,56 @@ const Header = (props) => {
 }
 
 // Part component
-const Part = ({courseTitle, numExercises}) => {
-  // console.log(courseTitle[0], numExercises[0]);
-  return <p>{courseTitle[0]} {numExercises[0]}</p>
+const Part = ({name, exercises}) => {
+  console.log(name, exercises);
+  return <p>{name} {exercises}</p>
 }
 
-// Content component
-const Content = ({courses, exercises}) => {
-  console.log(courses);
-
-  const [ course1, course2, course3 ] = courses.map(course => Object.values(course));
-  const [ ex1, ex2, ex3 ] = exercises.map(exercise => Object.values(exercise));
+//Content component
+const Content = ({parts}) => {
+  console.log(parts);
 
   return (
     <div>
-      <Part courseTitle={course1} numExercises={ex1} />
-      <Part courseTitle={course2} numExercises={ex2} />
-      <Part courseTitle={course3} numExercises={ex3} />
+      {
+        parts.map(part => <Part key={part.name} name={part.name} exercises={part.exercises} />)
+      }
     </div>
   )
 }
 
 // Total component
+const Total = ({parts}) => {
+  const [ part1, part2, part3 ] = parts;
+
+  return (
+    <p>Number of exercises {part1.exercises + part2.exercises + part3.exercises}</p>
+  )
+}
 
 
 const App = () => {
-  const course = 'Half Stack application development';
-  const part1 = 'Fundamentals of React';
-  const exercises1 = 10;
-  const part2 = 'Using props to pass data';
-  const exercises2 = 7;
-  const part3 = 'State of a component';
-  const exercises3 = 14;
+  const course = 'Half Stack application development'
+  const part1 = {
+    name: 'Fundamentals of React',
+    exercises: 10
+  }
+  const part2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
+  const part3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
 
   return (
     <div>
       <Header course={course} />
       <Content 
-        courses={[{part1}, {part2}, {part3}]}
-        exercises={[{exercises1}, {exercises2}, {exercises3}]}
+        parts={[part1, part2, part3]}
       />
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <Total parts={[part1, part2, part3]} />
     </div>
   )
 }
