@@ -6,21 +6,19 @@ const Header = (props) => {
 }
 
 // Part component
-// const Part = ({name, exercises}) => {
-//   console.log(name, exercises);
-//   return <p>{name} {exercises}</p>
-// }
+const Part = ({name, exercises}) => {
+  console.log(name, exercises);
+  return <p>{name} {exercises}</p>
+}
 
 //Content component
 const Content = ({parts}) => {
-  console.log(parts);
 
   return (
     <div>
-      <p>test</p>
-      {/* {
+      {
         parts.map(part => <Part key={part.name} name={part.name} exercises={part.exercises} />)
-      } */}
+      }
     </div>
   )
 }
