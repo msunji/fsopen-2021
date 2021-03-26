@@ -1,5 +1,29 @@
 import React from 'react';
 
+// Header component
+const Header = (props) => {
+  return <h1>{props.course}</h1>;
+}
+
+// Content component
+const Content = ({courses, exercises}) => {
+  console.log(courses);
+
+  const [ course1, course2, course3 ] = courses.map(course => Object.values(course));
+  const [ ex1, ex2, ex3 ] = exercises.map(exercise => Object.values(exercise));
+
+  return (
+    <div>
+      <p>{course1} {ex1}</p>
+      <p>{course2} {ex2}</p>
+      <p>{course3} {ex3}</p>
+    </div>
+  )
+}
+
+// Total component
+
+
 const App = () => {
   const course = 'Half Stack application development';
   const part1 = 'Fundamentals of React';
@@ -11,16 +35,11 @@ const App = () => {
 
   return (
     <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
+      <Header course={course} />
+      <Content 
+        courses={[{part1}, {part2}, {part3}]}
+        exercises={[{exercises1}, {exercises2}, {exercises3}]}
+      />
       <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
     </div>
   )
