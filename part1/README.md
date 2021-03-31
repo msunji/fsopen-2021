@@ -7,7 +7,7 @@
     Modify var definitions for App component and refactor the application
 - [x] __Exercise 1.4:__ \
     Place objects into an array and modify parts of the application accordingly
-- [ ] __Exercise 1.5:__ \
+- [x] __Exercise 1.5:__ \
     Change course and its parts into a single JS object. Refactor accordingly.
 - [ ] __Exercise 1.6:__
 
