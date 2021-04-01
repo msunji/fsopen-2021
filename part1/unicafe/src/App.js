@@ -14,13 +14,23 @@ const Statistic = ({ text, value }) => {
 };
 
 const Statistics = ({ feedback }) => {
-  console.log(feedback);
+  console.log(feedback.length);
   const [good, neutral, bad] = feedback;
   const allFeedback = good + neutral + bad;
   const negFeedback = bad * -1;
   const aveFeedback = (good + neutral + negFeedback) / allFeedback;
   const posPercentFeedback = (good / allFeedback) * 100;
 
+  // only render this component if someone actually leaves feedback
+  const noFeedback = feedback.every((value) => value === 0);
+
+  if (noFeedback) {
+    return (
+      <div>
+        <p>No one's left any feedback yet</p>
+      </div>
+    );
+  }
   return (
     <>
       <Statistic text="Good" value={good} />
