@@ -9,7 +9,7 @@
     Place objects into an array and modify parts of the application accordingly
 - [x] __Exercise 1.5:__ \
     Change course and its parts into a single JS object. Refactor accordingly.
-- [ ] __Exercise 1.6:__ \
+- [x] __Exercise 1.6:__ \
     Unicafe: Implement an application for collection feedback (good, neutral, bad)
 - [ ] __Exercise 1.7:__ \
     Unicafe: Show more statistics about gathered feedback (average and percentage of positive feedback)
