@@ -11,7 +11,7 @@
     Change course and its parts into a single JS object. Refactor accordingly.
 - [x] __Exercise 1.6:__ \
     Unicafe: Implement an application for collection feedback (good, neutral, bad)
-- [ ] __Exercise 1.7:__ \
+- [x] __Exercise 1.7:__ \
     Unicafe: Show more statistics about gathered feedback (average and percentage of positive feedback)
 - [ ] __Exercise 1.8:__ \
     Unicafe: Refactor the app to display statistics in its own Statistics component. State remains in the App root component
