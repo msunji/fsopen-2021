@@ -27,6 +27,8 @@ const App = () => {
     setVotes(copyVotes);
   }
 
+  const highestVotes = votes.indexOf(Math.max(...votes));
+
   // const randomIndex = (min, max) => {
   //   min = Math.ceil(min);
   //   max = Math.floor(max);
@@ -35,7 +37,8 @@ const App = () => {
 
   return (
     <div>
-      <p>{anecdotes[selected]}</p>
+      <h1>Anecdote of the day</h1>
+      <p>"{anecdotes[selected]}"</p>
       <p>This anecdote has {votes[selected]} votes</p>
       <button onClick={handleVotes}>
         vote for this anecdote
@@ -43,6 +46,10 @@ const App = () => {
       <button onClick={handleRandom}>
         random anecdote
       </button>
+
+      <h2>Anecdote with the most votes</h2>
+      <p>"{anecdotes[highestVotes]}"</p>
+      <p>This anecdote has {Math.max(...votes)} votes</p>
     </div>
   )
 }
