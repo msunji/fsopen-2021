@@ -13,7 +13,7 @@
     Unicafe: Implement an application for collection feedback (good, neutral, bad)
 - [x] __Exercise 1.7:__ \
     Unicafe: Show more statistics about gathered feedback (average and percentage of positive feedback)
-- [ ] __Exercise 1.8:__ \
+- [x] __Exercise 1.8:__ \
     Unicafe: Refactor the app to display statistics in its own Statistics component. State remains in the App root component
 - [ ] __Exercise 1.9:__ \
     Unicafe: Display stats only when feedback has been gathered
