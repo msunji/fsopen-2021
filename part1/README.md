@@ -17,7 +17,7 @@
     Unicafe: Refactor the app to display statistics in its own Statistics component. State remains in the App root component
 - [ ] __Exercise 1.9:__ \
     Unicafe: Display stats only when feedback has been gathered
-- [ ] __Exercise 1.10:__ \
+- [x] __Exercise 1.10:__ \
     Unicafe: Extract to two components - Button and Statistic (for a single stat)
 - [ ] __Exercise 1.11:__ \
     Unicafe: Display stats in an HTML table

@@ -5,20 +5,30 @@ const Button = ({ handleClick, text }) => {
   return <button onClick={handleClick}>{text}</button>;
 };
 
+const Statistic = ({ text, value }) => {
+  return (
+    <p>
+      {text}: {value}
+    </p>
+  );
+};
+
 const Statistics = ({ feedback }) => {
   console.log(feedback);
   const [good, neutral, bad] = feedback;
   const allFeedback = good + neutral + bad;
   const negFeedback = bad * -1;
+  const aveFeedback = (good + neutral + negFeedback) / allFeedback;
+  const posPercentFeedback = (good / allFeedback) * 100;
 
   return (
     <>
-      <p>Good: {good}</p>
-      <p>Neutral: {neutral}</p>
-      <p>Bad: {bad}</p>
-      <p>All: {allFeedback}</p>
-      <p>Average: {(good + neutral + negFeedback) / allFeedback}</p>
-      <p>% Positive: {(good / allFeedback) * 100}%</p>
+      <Statistic text="Good" value={good} />
+      <Statistic text="Neutral" value={neutral} />
+      <Statistic text="Bad" value={bad} />
+      <Statistic text="All" value={allFeedback} />
+      <Statistic text="Average" value={aveFeedback} />
+      <Statistic text="% Positive" value={posPercentFeedback} />
     </>
   );
 };
