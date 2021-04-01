@@ -12,9 +12,24 @@ const App = () => {
    
   const [selected, setSelected] = useState(0)
 
+  const handleRandom = () => {
+    const randomIndex = Math.floor(Math.random() * anecdotes.length);
+    console.log(randomIndex);
+    setSelected(randomIndex);
+  }
+
+  // const randomIndex = (min, max) => {
+  //   min = Math.ceil(min);
+  //   max = Math.floor(max);
+  //   return Math.random() * (anecdotesLength - 0) + min;
+  // }
+
   return (
     <div>
-      {anecdotes[selected]}
+      <p>{anecdotes[selected]}</p>
+      <button onClick={handleRandom}>
+        random anecdote
+      </button>
     </div>
   )
 }

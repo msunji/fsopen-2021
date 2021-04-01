@@ -21,7 +21,7 @@
     Unicafe: Extract to two components - Button and Statistic (for a single stat)
 - [x] __Exercise 1.11:__ \
     Unicafe: Display stats in an HTML table
-- [ ] __Exercise 1.12:__ \
+- [x] __Exercise 1.12:__ \
     Anecdotes: Add a button that displays a random anecdote
 - [ ] __Exercise 1.13:__ \
     Anecdotes: Function that lets you vote for the displayed anecdote
