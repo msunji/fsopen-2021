@@ -18,8 +18,9 @@ const Statistics = ({ feedback }) => {
   console.log(feedback.length);
   const [good, neutral, bad] = feedback;
   const allFeedback = good + neutral + bad;
+  const neutralFeedback = neutral * 0;
   const negFeedback = bad * -1;
-  const aveFeedback = (good + neutral + negFeedback) / allFeedback;
+  const aveFeedback = (good + neutralFeedback + negFeedback) / allFeedback;
   const posPercentFeedback = (good / allFeedback) * 100;
 
   // only render this component if someone actually leaves feedback
