@@ -18,7 +18,7 @@
 -[x] Exercise 2.3: \
  If you haven't done it this way, use the reduce method to calculate the sum of exercises
 
--[ ] Exercise 2.4: \
+-[x] Exercise 2.4: \
  Extend the application to allow for an _arbitrary_ number of courses
 
 -[ ] Exercise 2.5: \
