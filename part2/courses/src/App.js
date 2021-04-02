@@ -7,7 +7,7 @@ const Header = ({ course }) => {
 
 // Part component
 const Part = ({ part }) => {
-  const { name, exercises, id } = part;
+  const { name, exercises } = part;
   return (
     <p>
       {name} {exercises}
