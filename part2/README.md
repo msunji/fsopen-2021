@@ -12,10 +12,10 @@
                Part
 ```
 
--[ ]Exercise 2.2 -[ ] Exercise 2.2: \
+-[x] Exercise 2.2: \
  Show the sum of exercises of the coures
 
--[ ] Exercise 2.3: \
+-[x] Exercise 2.3: \
  If you haven't done it this way, use the reduce method to calculate the sum of exercises
 
 -[ ] Exercise 2.4: \

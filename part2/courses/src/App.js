@@ -28,17 +28,22 @@ const Content = ({ course }) => {
 };
 
 // // Total component
-// const Total = ({course}) => {
-//   const courseParts = course.parts;
+const Total = ({ course }) => {
+  const courseParts = course.parts;
 
-//   return (
-//     <p>
-//       Number of exercises: {
-//         courseParts.reduce((accumulator, part) => accumulator + part.exercises, 0)
-//       }
-//     </p>
-//   )
-// }
+  return (
+    <p>
+      <b>
+        Total of{" "}
+        {courseParts.reduce(
+          (accumulator, part) => accumulator + part.exercises,
+          0
+        )}{" "}
+        exercises
+      </b>
+    </p>
+  );
+};
 
 // Course component
 const Course = ({ course }) => {
@@ -47,6 +52,7 @@ const Course = ({ course }) => {
     <div>
       <Header course={course} />
       <Content course={course} />
+      <Total course={course} />
     </div>
   );
 };
