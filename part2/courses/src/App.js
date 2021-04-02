@@ -26,48 +26,32 @@ const Content = ({ course }) => {
       {courseParts.map((part) => (
         <Part key={part.id} part={part} />
       ))}
+      <Total courseParts={courseParts} />
     </div>
   );
 };
-// const Content = ({ course }) => {
-//   const courseParts = course.parts;
-//   return (
-//     <div>
-//       {courseParts.map((part) => (
-//         <Part key={part.id} name={part.name} exercises={part.exercises} />
-//       ))}
-//     </div>
-//   );
-// };
 
-// // Total component
-// const Total = ({ course }) => {
-//   const courseParts = course.parts;
-
-//   return (
-//     <p>
-//       <b>
-//         Total of{" "}
-//         {courseParts.reduce(
-//           (accumulator, part) => accumulator + part.exercises,
-//           0
-//         )}{" "}
-//         exercises
-//       </b>
-//     </p>
-//   );
-// };
+// Total component
+const Total = ({ courseParts }) => {
+  console.log(courseParts);
+  return (
+    <p>
+      <b>
+        Total of:{" "}
+        {courseParts.reduce((accum, part) => accum + part.exercises, 0)}{" "}
+        exercises
+      </b>
+    </p>
+  );
+};
 
 // Course component
 const Course = ({ courses }) => {
   return (
     <div>
       {courses.map((course) => (
-        <Content course={course} />
+        <Content key={course.id} course={course} />
       ))}
-      {/* <Header course={course} /> */}
-
-      {/* <Total course={course} /> */}
     </div>
   );
 };
@@ -117,7 +101,6 @@ const App = () => {
       ],
     },
   ];
-
   return <Course courses={courses} />;
 };
 
