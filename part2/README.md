@@ -1,6 +1,6 @@
 # Part 2 Exercises
 
--[ ] Exercise 2.1: \
+-[x] Exercise 2.1: \
  App component has been changed. Adjust accordingly. Component structure looks something like this: (also ensure that this works regardless of the number of parts)
 
 ```
@@ -12,7 +12,7 @@
                Part
 ```
 
--[ ] Exercise 2.2: \
+-[ ]Exercise 2.2 -[ ] Exercise 2.2: \
  Show the sum of exercises of the coures
 
 -[ ] Exercise 2.3: \
