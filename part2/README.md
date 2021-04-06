@@ -36,5 +36,5 @@
 - [x] **Exercise 2.9:** \
        Phonebook: Implement a search field to filter the list of people by name
 
-- [ ] **Exercise 2.10:** \
+- [x] **Exercise 2.10:** \
        Phonebook: Refactor the application by moving suitable parts into new components (ok to extract three components). State and event handlers are to remain the App component.
