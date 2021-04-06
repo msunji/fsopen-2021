@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 
@@ -59,7 +60,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <p>
-        filter numbers by name: <input onChange={handleFilter} />
+        filter numbers by name: <Filter handleFilter={handleFilter} />
       </p>
       <h2>Add a New Person</h2>
       <PersonForm
