@@ -27,8 +27,8 @@
 - [x] **Exercise 2.6:** \
        Phonebook: Add a new person to the phonebook (just the name for now)
 
-- [ ] **Exercise 2.7:** \
-       Phonebook: Issue a warning with the alart command when a user tries to add a name that already exists in the phonebook
+- [x] **Exercise 2.7:** \
+       Phonebook: Issue a warning with the alert command when a user tries to add a name that already exists in the phonebook
 
 - [ ] **Exercise 2.8:** \
        Phonebook: Allow users to add phone numbers to the phonebook

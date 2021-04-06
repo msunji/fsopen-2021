@@ -23,7 +23,10 @@ const App = () => {
       name: newName,
     };
 
-    setPersons(persons.concat(newPerson));
+    const duplicateError = `${newName} has already been added to phonebook`;
+    // on adding a new name, go through array of objects to check for duplicate property values. if true (aka there IS a duplicate), then trigger an alert, otherwise, add new person to list of people and display the list
+    const personBool = persons.some((person) => person.name === newName);
+    personBool ? alert(duplicateError) : setPersons(persons.concat(newPerson));
     setNewName("");
   };
 
