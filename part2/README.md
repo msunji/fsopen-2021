@@ -30,7 +30,7 @@
 - [x] **Exercise 2.7:** \
        Phonebook: Issue a warning with the alert command when a user tries to add a name that already exists in the phonebook
 
-- [ ] **Exercise 2.8:** \
+- [x] **Exercise 2.8:** \
        Phonebook: Allow users to add phone numbers to the phonebook
 
 - [ ] **Exercise 2.9:** \
