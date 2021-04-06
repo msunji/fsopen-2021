@@ -10,10 +10,14 @@ const Person = ({ name, number }) => {
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: "Arto Hellas", number: "(123)-123-1234" },
+    { name: "Arto Hellas", number: "040-123456" },
+    { name: "Ada Lovelace", number: "39-44-5323523" },
+    { name: "Dan Abramov", number: "12-43-234345" },
+    { name: "Mary Poppendieck", number: "39-23-6423122" },
   ]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
+  const [filter, setFilter] = useState("");
 
   // Event handlers
   const handleNewPerson = (e) => {
@@ -26,8 +30,13 @@ const App = () => {
   const handleNewNumber = (e) => {
     e.preventDefault();
     const number = e.target.value;
-    console.log(number);
     setNewNumber(number);
+  };
+
+  const handleFilter = (e) => {
+    // console.log(e.target, e.target.value);
+    const nameToFilter = e.target.value.toLowerCase();
+    setFilter(nameToFilter);
   };
 
   // Add name to array of objects
@@ -46,9 +55,19 @@ const App = () => {
     setNewNumber("");
   };
 
+  // RegEx for matching and new filtered list of people that match the conditions
+  const regex = new RegExp("^" + filter);
+  const filteredPersons = persons.filter((person) =>
+    regex.test(person.name.toLowerCase())
+  );
+
   return (
     <div>
       <h2>Phonebook</h2>
+      <p>
+        filter numbers by name: <input onChange={handleFilter} />
+      </p>
+      <h2>Add a New Person</h2>
       <form onSubmit={addPerson}>
         <div>
           name: <input onChange={handleNewPerson} value={newName} />
@@ -62,9 +81,21 @@ const App = () => {
       </form>
       <h2>Numbers</h2>
       <ul>
-        {persons.map((person) => (
-          <Person key={person.name} name={person.name} number={person.number} />
-        ))}
+        {filter.length === 0
+          ? persons.map((person) => (
+              <Person
+                key={person.name}
+                name={person.name}
+                number={person.number}
+              />
+            ))
+          : filteredPersons.map((person) => (
+              <Person
+                key={person.name}
+                name={person.name}
+                number={person.number}
+              />
+            ))}
       </ul>
       <div>
         debug: {newName} {newNumber}
