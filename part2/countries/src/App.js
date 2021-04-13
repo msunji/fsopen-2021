@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// const SingleCountry = () => {
+const Country = ({ country }) => {
+  const [show, setShow] = useState(false);
 
-// }
+  const handleShow = () => {
+    setShow(!show);
+  };
+  return (
+    <div key={country.name}>
+      <p>
+        {country.name}{" "}
+        <button onClick={handleShow}>{show ? "Hide" : "Show"}</button>
+      </p>
+    </div>
+  );
+};
 
 const CountryList = ({ countryMatches }) => {
   if (countryMatches.length > 10) {
@@ -12,9 +24,7 @@ const CountryList = ({ countryMatches }) => {
     return (
       <div>
         {countryMatches.map((countryMatch) => (
-          <div key={countryMatch.name}>
-            <p>{countryMatch.name}</p>
-          </div>
+          <Country country={countryMatch} />
         ))}
       </div>
     );
@@ -28,7 +38,7 @@ const CountryList = ({ countryMatches }) => {
         <h2>languages</h2>
         <ul>
           {countryMatches[0].languages.map((language) => (
-            <li>{language.name}</li>
+            <li key={language.name}>{language.name}</li>
           ))}
         </ul>
 
@@ -50,7 +60,7 @@ function App() {
   // Effect hook
   const hook = () => {
     axios.get("https://restcountries.eu/rest/v2/all").then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       setCountries(res.data);
     });
   };
