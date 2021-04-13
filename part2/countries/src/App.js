@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const CountryList = ({ queryMatches }) => {
-  console.log(queryMatches);
-  return <p>Results go here</p>;
-};
-
 function App() {
   // State
   const [countries, setCountries] = useState([]);
@@ -21,6 +16,7 @@ function App() {
   useEffect(hook, []);
 
   // handle matching query
+  // if no query specified, return an empty array, otherwise, filter the country list based on country name + specified query
   const queryMatches =
     query.length === 0
       ? []
@@ -38,7 +34,15 @@ function App() {
     <div>
       find countries: <input value={query} onChange={handleQuery} />
       <h1>Search Results</h1>
-      <CountryList queryMatches={queryMatches} />
+      {queryMatches.length > 10 ? (
+        <p>Too many results. Try something more specific.</p>
+      ) : (
+        queryMatches.map((queryMatch) => (
+          <div key={queryMatch.name}>
+            <p>{queryMatch.name}</p>
+          </div>
+        ))
+      )}
     </div>
   );
 }
