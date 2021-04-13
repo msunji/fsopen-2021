@@ -7,7 +7,7 @@ const PersonForm = ({
   newName,
   newNumber,
 }) => {
-  console.log(newName, newNumber);
+  // console.log(newName, newNumber);
   return (
     <>
       <form onSubmit={addPerson}>
