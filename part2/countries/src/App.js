@@ -1,12 +1,48 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const CountryDetails = ({ country }) => {
+  const { name, capital, population, languages, flag } = country;
+
+  return (
+    <div>
+      <h2>{name}</h2>
+      <p>capital {capital}</p>
+      <p>population {population}</p>
+
+      <h2>languages</h2>
+      <ul>
+        {languages.map((language) => (
+          <li key={language.name}>{language.name}</li>
+        ))}
+      </ul>
+
+      <img src={flag} alt={`flag of ${name}`} width="30%" />
+    </div>
+  );
+};
+
 const Country = ({ country }) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => {
     setShow(!show);
   };
+
+  console.log(show);
+
+  if (show) {
+    return (
+      <div key={country.name}>
+        <p>
+          {country.name}{" "}
+          <button onClick={handleShow}>{show ? "Hide" : "Show"}</button>
+        </p>
+        <CountryDetails country={country} />
+      </div>
+    );
+  }
+
   return (
     <div key={country.name}>
       <p>
@@ -24,31 +60,12 @@ const CountryList = ({ countryMatches }) => {
     return (
       <div>
         {countryMatches.map((countryMatch) => (
-          <Country country={countryMatch} />
+          <Country key={countryMatch.name} country={countryMatch} />
         ))}
       </div>
     );
   } else {
-    return (
-      <div>
-        <h1>{countryMatches[0].name}</h1>
-        <p>capital: {countryMatches[0].capital}</p>
-        <p>population: {countryMatches[0].population}</p>
-
-        <h2>languages</h2>
-        <ul>
-          {countryMatches[0].languages.map((language) => (
-            <li key={language.name}>{language.name}</li>
-          ))}
-        </ul>
-
-        <img
-          src={countryMatches[0].flag}
-          alt="the flag of {countrMatches[0].name}"
-          width="30%"
-        />
-      </div>
-    );
+    return <CountryDetails country={countryMatches[0]} />;
   }
 };
 
