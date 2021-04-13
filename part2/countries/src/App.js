@@ -1,6 +1,47 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+// const SingleCountry = () => {
+
+// }
+
+const CountryList = ({ countryMatches }) => {
+  if (countryMatches.length > 10) {
+    return <p>Too many results. Try something more specific.</p>;
+  } else if (countryMatches.length < 10 && countryMatches.length > 1) {
+    return (
+      <div>
+        {countryMatches.map((countryMatch) => (
+          <div key={countryMatch.name}>
+            <p>{countryMatch.name}</p>
+          </div>
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>{countryMatches[0].name}</h1>
+        <p>capital: {countryMatches[0].capital}</p>
+        <p>population: {countryMatches[0].population}</p>
+
+        <h2>languages</h2>
+        <ul>
+          {countryMatches[0].languages.map((language) => (
+            <li>{language.name}</li>
+          ))}
+        </ul>
+
+        <img
+          src={countryMatches[0].flag}
+          alt="the flag of {countrMatches[0].name}"
+          width="30%"
+        />
+      </div>
+    );
+  }
+};
+
 function App() {
   // State
   const [countries, setCountries] = useState([]);
@@ -9,6 +50,7 @@ function App() {
   // Effect hook
   const hook = () => {
     axios.get("https://restcountries.eu/rest/v2/all").then((res) => {
+      console.log(res.data);
       setCountries(res.data);
     });
   };
@@ -34,14 +76,10 @@ function App() {
     <div>
       find countries: <input value={query} onChange={handleQuery} />
       <h1>Search Results</h1>
-      {queryMatches.length > 10 ? (
-        <p>Too many results. Try something more specific.</p>
+      {queryMatches.length === 0 ? (
+        ""
       ) : (
-        queryMatches.map((queryMatch) => (
-          <div key={queryMatch.name}>
-            <p>{queryMatch.name}</p>
-          </div>
-        ))
+        <CountryList countryMatches={queryMatches} />
       )}
     </div>
   );
