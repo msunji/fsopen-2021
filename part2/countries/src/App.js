@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const CountryDetails = ({ country }) => {
+const WeatherDetails = ({ weather }) => (
+  <div>
+    {weather && (
+      <div>
+        <h2>Weather Info</h2>
+        <strong>Temperature:</strong> {weather.current.temperature} celsius
+        <br />
+        <img src={weather.current.weather_icons[0]} alt="weather icon" />
+        <br />
+        <strong>Wind:</strong> {weather.current.wind_speed} mph direction{" "}
+        {weather.current.wind_dir}
+      </div>
+    )}
+  </div>
+);
+
+const CountryDetails = ({ country, weather }) => {
   const { name, capital, population, languages, flag } = country;
+  console.log(weather);
 
   return (
     <div>
@@ -18,6 +35,8 @@ const CountryDetails = ({ country }) => {
       </ul>
 
       <img src={flag} alt={`flag of ${name}`} width="30%" />
+
+      <WeatherDetails weather={weather} />
     </div>
   );
 };
@@ -52,7 +71,7 @@ const Country = ({ country }) => {
   );
 };
 
-const CountryMatches = ({ countryMatches }) => {
+const CountryMatches = ({ countryMatches, weather }) => {
   // console.log(countryMatches);
   if (countryMatches.length > 10) {
     return <p>Too many results. Try something more specific.</p>;
@@ -65,7 +84,7 @@ const CountryMatches = ({ countryMatches }) => {
       </div>
     );
   } else if (countryMatches.length === 1) {
-    return <CountryDetails country={countryMatches[0]} />;
+    return <CountryDetails country={countryMatches[0]} weather={weather} />;
   } else {
     return <p>Doesn't seem like you've put anything in the search field.</p>;
   }
@@ -122,7 +141,7 @@ function App() {
     <div>
       find countries: <input onChange={handleQuery} />
       <h1>Search Results</h1>
-      <CountryMatches countryMatches={countries} />
+      <CountryMatches countryMatches={countries} weather={weather} />
     </div>
   );
 }
