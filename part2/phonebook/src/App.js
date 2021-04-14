@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import personsService from "./services/persons";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
@@ -22,7 +21,6 @@ const App = () => {
   // Event handlers
   const handleNewPerson = (e) => {
     e.preventDefault();
-    // console.log(e.target.value);
     const name = e.target.value;
     setNewName(name);
   };
@@ -34,7 +32,6 @@ const App = () => {
   };
 
   const handleFilter = (e) => {
-    // console.log(e.target, e.target.value);
     const nameToFilter = e.target.value.toLowerCase();
     setFilter(nameToFilter);
   };
@@ -42,16 +39,15 @@ const App = () => {
   // Add name to array of objects
   const addPerson = (e) => {
     e.preventDefault();
-    const baseUrl = "http://localhost:3001/persons";
-
     const newPerson = {
       name: newName,
       number: newNumber,
     };
-    axios.post(baseUrl, newPerson).then((res) => {
-      setPersons(persons.concat(newPerson));
-      setNewName("");
-      setNewNumber("");
+    // Recall that  the addPerson function in the persons module takes newPerson as a param
+    personsService.newPerson(newPerson).then((returnedPerson) => {
+      setPersons(persons.concat(returnedPerson));
+      setNewName(""); // reset input value
+      setNewNumber(""); // likewise
     });
 
     // const duplicateError = `${newName} has already been added to phonebook`;

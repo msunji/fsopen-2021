@@ -3,12 +3,18 @@ import axios from "axios";
 const baseUrl = "http://localhost:3001/persons";
 
 // Move our HTTP requests to this module
-// Show everyone currently in the phonebook
 
+// Show everyone currently in the phonebook
 const getPersons = () => {
   const request = axios.get(baseUrl);
   return request.then((res) => res.data);
 };
 
+// Add a new person to the phonebook
+const newPerson = (newPerson) => {
+  const request = axios.post(baseUrl, newPerson);
+  return request.then((res) => res.data);
+};
+
 // Export module's functions
-export default { getPersons };
+export default { getPersons, newPerson };
