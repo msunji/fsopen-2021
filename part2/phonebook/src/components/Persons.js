@@ -5,19 +5,9 @@ const Persons = ({ filter, persons, filteredPersons }) => {
   return (
     <ul>
       {filter.length === 0
-        ? persons.map((person) => (
-            <Person
-              key={person.name}
-              name={person.name}
-              number={person.number}
-            />
-          ))
+        ? persons.map((person) => <Person key={person.id} person={person} />)
         : filteredPersons.map((person) => (
-            <Person
-              key={person.name}
-              name={person.name}
-              number={person.number}
-            />
+            <Person key={person.id} person={person} />
           ))}
     </ul>
   );
