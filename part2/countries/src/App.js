@@ -53,7 +53,7 @@ const Country = ({ country }) => {
 };
 
 const CountryMatches = ({ countryMatches }) => {
-  console.log(countryMatches);
+  // console.log(countryMatches);
   if (countryMatches.length > 10) {
     return <p>Too many results. Try something more specific.</p>;
   } else if (countryMatches.length < 10 && countryMatches.length > 1) {
@@ -98,14 +98,19 @@ function App() {
   const weatherHook = () => {
     const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
     const WEATHER_KEY = process.env.REACT_APP_WEATHER_API;
-    axios
-      .get(`${baseUrl}?access_key=${WEATHER_KEY}&query=Tokyo`)
-      .then((res) => {
-        console.log(res.data);
-      });
+
+    if (countries.length === 1) {
+      const { capital } = countries[0];
+      axios
+        .get(`${baseUrl}?access_key=${WEATHER_KEY}&query=${capital}`)
+        .then((res) => {
+          console.log(res.data);
+          setWeather(res.data);
+        });
+    }
   };
 
-  useEffect(weatherHook, []);
+  useEffect(weatherHook, [countries]);
 
   // event handlers
   const handleQuery = (e) => {
