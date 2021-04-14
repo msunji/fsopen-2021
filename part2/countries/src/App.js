@@ -75,9 +75,11 @@ function App() {
   // State
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
+  const [weather, setWeather] = useState(null);
 
   // Effect hooks
-  const hook = () => {
+  // Get list of countries
+  const countriesHook = () => {
     axios.get("https://restcountries.eu/rest/v2/all").then((res) => {
       const allCountries = res.data;
       // console.log(res.data);
@@ -90,7 +92,20 @@ function App() {
     });
   };
 
-  useEffect(hook, [query]);
+  useEffect(countriesHook, [query]);
+
+  // Get weather
+  const weatherHook = () => {
+    const baseUrl = process.env.REACT_APP_WEATHER_BASE_URL;
+    const WEATHER_KEY = process.env.REACT_APP_WEATHER_API;
+    axios
+      .get(`${baseUrl}?access_key=${WEATHER_KEY}&query=Tokyo`)
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+
+  useEffect(weatherHook, []);
 
   // event handlers
   const handleQuery = (e) => {
