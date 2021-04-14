@@ -28,7 +28,6 @@ const Country = ({ country }) => {
   const handleShow = () => {
     setShow(!show);
   };
-
   // console.log(show);
 
   if (show) {
@@ -54,6 +53,7 @@ const Country = ({ country }) => {
 };
 
 const CountryMatches = ({ countryMatches }) => {
+  console.log(countryMatches);
   if (countryMatches.length > 10) {
     return <p>Too many results. Try something more specific.</p>;
   } else if (countryMatches.length < 10 && countryMatches.length > 1) {
@@ -64,8 +64,10 @@ const CountryMatches = ({ countryMatches }) => {
         ))}
       </div>
     );
-  } else {
+  } else if (countryMatches.length === 1) {
     return <CountryDetails country={countryMatches[0]} />;
+  } else {
+    return <p>Doesn't seem like you've put anything in the search field.</p>;
   }
 };
 
@@ -81,7 +83,7 @@ function App() {
       // console.log(res.data);
       if (query.length !== 0) {
         const queryMatches = allCountries.filter((country) =>
-          country.name.toLowerCase().includes(query.toLowerCase())
+          country.name.toLowerCase().includes(query)
         );
         setCountries(queryMatches);
       }
@@ -89,15 +91,6 @@ function App() {
   };
 
   useEffect(hook, [query]);
-
-  // handle matching query
-  // if no query specified, return an empty array, otherwise, filter the country list based on country name + specified query
-  // const queryMatches =
-  //   query.length === 0
-  //     ? []
-  //     : countries.filter((country) =>
-  //         country.name.toLowerCase().includes(query)
-  //       );
 
   // event handlers
   const handleQuery = (e) => {
@@ -107,7 +100,7 @@ function App() {
 
   return (
     <div>
-      find countries: <input value={query} onChange={handleQuery} />
+      find countries: <input onChange={handleQuery} />
       <h1>Search Results</h1>
       <CountryMatches countryMatches={countries} />
     </div>
