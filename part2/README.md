@@ -46,3 +46,11 @@
        Countries: When multiple countries are shown allow user to toggle views for that country.
 - [x] **Exercise 2.14:** \
        Countries: When showing data of a single country, show weather report for the capital of that country.
+- [ ] **Exercise 2.15:** \
+       Save phonebook numbers to a backend server.
+- [ ] **Exercise 2.16:** \
+       Extract code that handles communication with backend into its own module.
+- [ ] **Exercise 2.17:** \
+       Allow users to delete entries from the phonebook. Confirmation from user done with the `window.confirm` method
+- [ ] **Exercise 2.18:** \
+       Change one of the existing functions so if a number is added to an _existing_ user, then the new number replaces the old number. Use the PUT method for this. If the person's info is already in the phonebook, then the application confirms the action again with the `window.confirm` method.
