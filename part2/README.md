@@ -48,7 +48,7 @@
        Countries: When showing data of a single country, show weather report for the capital of that country.
 - [x] **Exercise 2.15:** \
        Phonebook: Save phonebook numbers to a backend server.
-- [ ] **Exercise 2.16:** \
+- [x] **Exercise 2.16:** \
        Phonebook: Extract code that handles communication with backend into its own module.
 - [ ] **Exercise 2.17:** \
        Phonebook: Allow users to delete entries from the phonebook. Confirmation from user done with the `window.confirm` method
