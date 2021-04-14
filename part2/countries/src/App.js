@@ -29,7 +29,7 @@ const Country = ({ country }) => {
     setShow(!show);
   };
 
-  console.log(show);
+  // console.log(show);
 
   if (show) {
     return (
@@ -53,7 +53,7 @@ const Country = ({ country }) => {
   );
 };
 
-const CountryList = ({ countryMatches }) => {
+const CountryMatches = ({ countryMatches }) => {
   if (countryMatches.length > 10) {
     return <p>Too many results. Try something more specific.</p>;
   } else if (countryMatches.length < 10 && countryMatches.length > 1) {
@@ -74,24 +74,30 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [query, setQuery] = useState("");
 
-  // Effect hook
+  // Effect hooks
   const hook = () => {
     axios.get("https://restcountries.eu/rest/v2/all").then((res) => {
+      const allCountries = res.data;
       // console.log(res.data);
-      setCountries(res.data);
+      if (query.length !== 0) {
+        const queryMatches = allCountries.filter((country) =>
+          country.name.toLowerCase().includes(query.toLowerCase())
+        );
+        setCountries(queryMatches);
+      }
     });
   };
 
-  useEffect(hook, []);
+  useEffect(hook, [query]);
 
   // handle matching query
   // if no query specified, return an empty array, otherwise, filter the country list based on country name + specified query
-  const queryMatches =
-    query.length === 0
-      ? []
-      : countries.filter((country) =>
-          country.name.toLowerCase().includes(query)
-        );
+  // const queryMatches =
+  //   query.length === 0
+  //     ? []
+  //     : countries.filter((country) =>
+  //         country.name.toLowerCase().includes(query)
+  //       );
 
   // event handlers
   const handleQuery = (e) => {
@@ -103,11 +109,7 @@ function App() {
     <div>
       find countries: <input value={query} onChange={handleQuery} />
       <h1>Search Results</h1>
-      {queryMatches.length === 0 ? (
-        ""
-      ) : (
-        <CountryList countryMatches={queryMatches} />
-      )}
+      <CountryMatches countryMatches={countries} />
     </div>
   );
 }
