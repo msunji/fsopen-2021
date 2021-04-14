@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import personsService from "./services/persons";
 import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
@@ -29,6 +30,21 @@ const App = () => {
     e.preventDefault();
     const number = e.target.value;
     setNewNumber(number);
+  };
+
+  const handleDelete = (id) => {
+    const personToDelete = persons.find((person) => person.id === id);
+    if (window.confirm(`Delete ${personToDelete.name}?`)) {
+      // console.log("delete", personToDelete.id);
+      axios
+        .delete(`http://localhost:3001/persons/${personToDelete.id}`)
+        .then((res) => {
+          const newPersonsList = persons.filter(
+            (person) => person.id !== personToDelete.id
+          );
+          setPersons(newPersonsList);
+        });
+    }
   };
 
   const handleFilter = (e) => {
@@ -84,6 +100,7 @@ const App = () => {
         persons={persons}
         filter={filter}
         filteredPersons={filteredPersons}
+        handleDelete={handleDelete}
       />
     </div>
   );

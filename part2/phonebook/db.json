@@ -16,19 +16,9 @@
       "id": 3
     },
     {
-      "name": "Mary Poppendieck",
-      "number": "39-23-6423122",
+      "name": "Mary P",
+      "number": "123-4456-789",
       "id": 4
-    },
-    {
-      "name": "Bob the Builder",
-      "number": "12345",
-      "id": 5
-    },
-    {
-      "name": "Test Person",
-      "number": "123-567890",
-      "id": 6
     }
   ]
 }
