@@ -40,9 +40,9 @@
        Phonebook: Refactor the application by moving suitable parts into new components (ok to extract three components). State and event handlers are to remain the App component.
 - [x] **Exercise 2.11:** \
        Phonebook: Modify the application so that the initial state of the data is fetched with the axios library.
-- [*] **Exercise 2.12:** \
-   Countries: Create an app that pulls data from the given API. Allow users to search for a country. When the search query matches multiple countries, display their names as a list. Otherwise, if there is only one country that matches the query, then show basic data: country name, capital, population, languages spoken, country's flag
-- [*] **Exercise 2.13:** \
-   Countries: When multiple countries are shown allow user to toggle views for that country.
-- [ ] **Exercise 2.14:** \
+- [x] **Exercise 2.12:** \
+       Countries: Create an app that pulls data from the given API. Allow users to search for a country. When the search query matches multiple countries, display their names as a list. Otherwise, if there is only one country that matches the query, then show basic data: country name, capital, population, languages spoken, country's flag
+- [x] **Exercise 2.13:** \
+       Countries: When multiple countries are shown allow user to toggle views for that country.
+- [x] **Exercise 2.14:** \
        Countries: When showing data of a single country, show weather report for the capital of that country.
