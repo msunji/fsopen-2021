@@ -22,5 +22,11 @@ const deletePerson = (personId) => {
   return request.then((res) => res.data);
 };
 
+// Update a person's phone number
+const changeNumber = (personId, modPerson) => {
+  const request = axios.put(`${baseUrl}/${personId}`, modPerson);
+  return request.then((res) => res.data);
+};
+
 // Export module's functions
-export default { getPersons, newPerson, deletePerson };
+export default { getPersons, newPerson, deletePerson, changeNumber };
