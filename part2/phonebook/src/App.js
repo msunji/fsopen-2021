@@ -81,45 +81,19 @@ const App = () => {
               )
             );
           });
+        setNewName("");
+        setNewNumber("");
         return;
       }
+      setNewName("");
+      setNewNumber("");
       return;
     }
     personsService.newPerson(newPerson).then((returnedPerson) => {
       setPersons(persons.concat(returnedPerson));
     });
-
     setNewName(""); // reset input value
     setNewNumber(""); // likewise
-
-    // const duplicateError = `${newName} has already been added to phonebook. Would you like to replace the old number with a new one?`;
-    // // on adding a new name, go through array of objects to check for duplicate property values. if true (aka there IS a duplicate), then trigger an alert, otherwise, add new person to list of people and display the list
-    // const confirmChange = window.confirm(duplicateError);
-
-    // if (personExists) {
-    //   // if there is a duplicate, then find the entry in the phonebook (name should be the same as newName)
-    //   const personToChange = persons.find(
-    //     (person) => person.name.toLowerCase() === newName.toLowerCase()
-    //   );
-    //   // modify said person's details
-    //   const changedDetails = { ...personToChange, number: newNumber }; // use obj spread syntax to make a copy of the old details
-
-    //   if (confirmChange) {
-    //     // PUT request should take the modified persons object
-    //     personsService
-    //       .changeNumber(personToChange.id, changedDetails)
-    //       .then((returnedPerson) => {
-    //         setPersons(
-    //           persons.map((person) =>
-    //             person.id !== personToChange.id ? person : returnedPerson
-    //           )
-    //         );
-    //       });
-    //     setNewName("");
-    //     setNewNumber("");
-    //     return;
-    //   }
-    // }
   };
 
   // RegEx for matching and new filtered list of people that match the conditions
