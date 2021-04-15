@@ -5,11 +5,11 @@ import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 
 const Notif = ({ status, message }) => {
-  if (message === null) {
+  if (message == null) {
     return null;
   }
   return (
-    <div className={status}>
+    <div className={`notifStyle ${status}`}>
       <p>{message}</p>
     </div>
   );
@@ -21,7 +21,7 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
-  const [notif, setNotif] = useState(null);
+  const [notif, setNotif] = useState({});
 
   // Effect hook
   useEffect(() => {
@@ -47,12 +47,33 @@ const App = () => {
     const personToDelete = persons.find((person) => person.id === id);
     if (window.confirm(`Delete ${personToDelete.name}?`)) {
       // console.log("delete", personToDelete.id);
-      personsService.deletePerson(personToDelete.id).then(() => {
-        const peopleList = persons.filter(
-          (person) => personToDelete.id !== person.id
-        );
-        setPersons(peopleList);
-      });
+      personsService
+        .deletePerson(personToDelete.id)
+        .then(() => {
+          const peopleList = persons.filter(
+            (person) => personToDelete.id !== person.id
+          );
+          setPersons(peopleList);
+          setNotif({
+            message: `Sucessfully removed ${personToDelete.name} from phonebook.`,
+            status: "success",
+          });
+          setTimeout(() => {
+            setNotif({});
+          }, 5000);
+        })
+        .catch((error) => {
+          setNotif({
+            message: `Oops. Looks like ${personToDelete.name} has already been removed from the phonebook`,
+            status: "error",
+          });
+          setPersons(
+            persons.filter((person) => person.id !== personToDelete.id)
+          );
+          setTimeout(() => {
+            setNotif({});
+          }, 5000);
+        });
     }
   };
 
@@ -92,6 +113,13 @@ const App = () => {
                 person.id === personToChange.id ? returnedPerson : person
               )
             );
+            setNotif({
+              message: `Successfully updated ${newPerson.name}'s number'`,
+              status: "success",
+            });
+            setTimeout(() => {
+              setNotif({});
+            }, 5000);
           });
         setNewName("");
         setNewNumber("");
@@ -103,9 +131,12 @@ const App = () => {
     }
     personsService.newPerson(newPerson).then((returnedPerson) => {
       setPersons(persons.concat(returnedPerson));
-      setNotif(`Successfully added ${newPerson.name} to phonebook.`);
+      setNotif({
+        message: `Successfully added ${newPerson.name} to phonebook.`,
+        status: "success",
+      });
       setTimeout(() => {
-        setNotif(null);
+        setNotif({});
       }, 5000);
     });
     setNewName(""); // reset input value
@@ -134,7 +165,10 @@ const App = () => {
       />
 
       <h2>Numbers</h2>
-      <Notif status="notif" message={notif} />
+      <Notif
+        status={notif?.status === "success" ? "success" : "error"}
+        message={notif?.message}
+      />
       <Persons
         persons={persons}
         filter={filter}
