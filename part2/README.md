@@ -50,7 +50,7 @@
        Phonebook: Save phonebook numbers to a backend server.
 - [x] **Exercise 2.16:** \
        Phonebook: Extract code that handles communication with backend into its own module.
-- [ ] **Exercise 2.17:** \
+- [x] **Exercise 2.17:** \
        Phonebook: Allow users to delete entries from the phonebook. Confirmation from user done with the `window.confirm` method
 - [ ] **Exercise 2.18:** \
        Phonebook: Change one of the existing functions so if a number is added to an _existing_ user, then the new number replaces the old number. Use the PUT method for this. If the person's info is already in the phonebook, then the application confirms the action again with the `window.confirm` method.
