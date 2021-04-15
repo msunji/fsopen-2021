@@ -4,12 +4,24 @@ import Filter from "./components/Filter";
 import PersonForm from "./components/PersonForm";
 import Persons from "./components/Persons";
 
+const Notif = ({ status, message }) => {
+  if (message === null) {
+    return null;
+  }
+  return (
+    <div className={status}>
+      <p>{message}</p>
+    </div>
+  );
+};
+
 const App = () => {
   // state
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
+  const [notif, setNotif] = useState(null);
 
   // Effect hook
   useEffect(() => {
@@ -91,6 +103,10 @@ const App = () => {
     }
     personsService.newPerson(newPerson).then((returnedPerson) => {
       setPersons(persons.concat(returnedPerson));
+      setNotif(`Successfully added ${newPerson.name} to phonebook.`);
+      setTimeout(() => {
+        setNotif(null);
+      }, 5000);
     });
     setNewName(""); // reset input value
     setNewNumber(""); // likewise
@@ -118,6 +134,7 @@ const App = () => {
       />
 
       <h2>Numbers</h2>
+      <Notif status="notif" message={notif} />
       <Persons
         persons={persons}
         filter={filter}
