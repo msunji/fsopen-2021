@@ -16,5 +16,11 @@ const newPerson = (newPerson) => {
   return request.then((res) => res.data);
 };
 
+// Delete a person from the phonebook
+const deletePerson = (personId) => {
+  const request = axios.delete(`${baseUrl}/${personId}`);
+  return request.then((res) => res.data);
+};
+
 // Export module's functions
-export default { getPersons, newPerson };
+export default { getPersons, newPerson, deletePerson };

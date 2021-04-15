@@ -36,14 +36,12 @@ const App = () => {
     const personToDelete = persons.find((person) => person.id === id);
     if (window.confirm(`Delete ${personToDelete.name}?`)) {
       // console.log("delete", personToDelete.id);
-      axios
-        .delete(`http://localhost:3001/persons/${personToDelete.id}`)
-        .then((res) => {
-          const newPersonsList = persons.filter(
-            (person) => person.id !== personToDelete.id
-          );
-          setPersons(newPersonsList);
-        });
+      personsService.deletePerson(personToDelete.id).then(() => {
+        const peopleList = persons.filter(
+          (person) => personToDelete.id !== person.id
+        );
+        setPersons(peopleList);
+      });
     }
   };
 
