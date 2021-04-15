@@ -54,3 +54,7 @@
        Phonebook: Allow users to delete entries from the phonebook. Confirmation from user done with the `window.confirm` method
 - [x] **Exercise 2.18:** \
        Phonebook: Change one of the existing functions so if a number is added to an _existing_ user, then the new number replaces the old number. Use the PUT method for this. If the person's info is already in the phonebook, then the application confirms the action again with the `window.confirm` method.
+- [ ] **Exercise 2.19:** \
+       Phonebook: Improve the error message function. Show a notif that lasts for a few seconds when a successful operation is executed (person added, number has been changed)
+- [ ] **Exercise 2.20:** \
+       Phonebook: Show error message if you try to modify/delete an entry that no longer esists on the server. There should be some distinction between successful and unsuccesful events.
