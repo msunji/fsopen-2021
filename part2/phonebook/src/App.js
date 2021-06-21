@@ -120,6 +120,12 @@ const App = () => {
             setTimeout(() => {
               setNotif({});
             }, 5000);
+          })
+          .catch((error) => {
+            setNotif({ message: error.response.data.error, status: "error" });
+            setTimeout(() => {
+              setNotif({});
+            }, 5000);
           });
         setNewName("");
         setNewNumber("");
@@ -129,16 +135,28 @@ const App = () => {
       setNewNumber("");
       return;
     }
-    personsService.newPerson(newPerson).then((returnedPerson) => {
-      setPersons(persons.concat(returnedPerson));
-      setNotif({
-        message: `Successfully added ${newPerson.name} to phonebook.`,
-        status: "success",
+    personsService
+      .newPerson(newPerson)
+      .then((returnedPerson) => {
+        setPersons(persons.concat(returnedPerson));
+        setNotif({
+          message: `Successfully added ${newPerson.name} to phonebook.`,
+          status: "success",
+        });
+        setTimeout(() => {
+          setNotif({});
+        }, 5000);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        setNotif({
+          message: error.response.data.error,
+          status: "error",
+        });
+        setTimeout(() => {
+          setNotif({});
+        }, 5000);
       });
-      setTimeout(() => {
-        setNotif({});
-      }, 5000);
-    });
     setNewName(""); // reset input value
     setNewNumber(""); // likewise
   };
