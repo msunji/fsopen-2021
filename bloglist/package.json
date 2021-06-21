@@ -1,0 +1,14 @@
+{
+  "name": "bloglist",
+  "version": "1.0.0",
+  "description": "FSOpen 2021 Part 4 exercise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "marge",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "2.3.1"
+  }
+}
