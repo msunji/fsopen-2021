@@ -7,7 +7,7 @@ const average = (arr) => {
     return sum + item;
   };
 
-  return arr.reduce(reducer, 0) / arr.length;
+  return arr.length === 0 ? 0 : arr.reduce(reducer, 0) / arr.length;
 };
 
 module.exports = {
