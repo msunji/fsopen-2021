@@ -41,8 +41,8 @@ app.get("/api/blogs", (req, res) => {
 app.post("/api/blogs", (req, res) => {
   const blog = new Blog(req.body);
 
-  blog.save().then((res) => {
-    res.status(201).json(res);
+  blog.save().then((result) => {
+    res.status(201).json(result);
   });
 });
 
