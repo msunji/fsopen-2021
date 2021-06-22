@@ -73,7 +73,6 @@ describe("total likes", () => {
 describe("most likes", () => {
   test("of an empty list is zero", () => {
     const result = listHelper.favoriteBlog(emptyBlogs);
-    console.log(result);
     expect(result).toEqual(0);
   });
 
@@ -95,6 +94,36 @@ describe("most likes", () => {
       url: "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
       likes: 12,
       __v: 0,
+    });
+  });
+});
+
+describe("most blogs", () => {
+  test("should be zero if list is empty", () => {
+    const result = listHelper.mostBlogs([]);
+    expect(result).toBe(0);
+  });
+
+  test("should show the author who shows up the most in the bloglist", () => {
+    const result = listHelper.mostBlogs(blogs);
+    expect(result).toEqual({
+      author: "Robert C. Martin",
+      blogs: 3,
+    });
+  });
+});
+
+describe("most likes", () => {
+  test("should be zero if list is empty", () => {
+    const result = listHelper.mostLikes([]);
+    expect(result).toBe(0);
+  });
+
+  test("should show the author with the most number of total likes", () => {
+    const result = listHelper.mostLikes(blogs);
+    expect(result).toEqual({
+      author: "Edsger W. Dijkstra",
+      likes: 17,
     });
   });
 });
